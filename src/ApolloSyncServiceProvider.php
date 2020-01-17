@@ -9,15 +9,16 @@ namespace Run\Apollo\Client;
 
 
 use Illuminate\Support\ServiceProvider;
+use Run\Apollo\Client\Console\SyncConfig;
 
 class ApolloSyncServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
+     * @var array
      */
-    protected $defer = true;
+    protected $commands = [
+        SyncConfig::class,
+    ];
 
     public function boot()
     {
@@ -27,16 +28,16 @@ class ApolloSyncServiceProvider extends ServiceProvider
         } else {
             $publishPath = base_path('config/apollo.php');
         }
-        $this->publishes([$configPath => $publishPath], 'config');
+        if ($this->app->runningInConsole()) {
+            $this->publishes([$configPath => $publishPath], 'config');
+        }
+
+
     }
 
     public function register()
     {
-        $configPath = __DIR__ . '/../config/apollo.php';
-        $this->mergeConfigFrom($configPath, 'apollo');
+        $this->commands($this->commands);
 
-        $this->commands(
-            'command.apollo:sync-config'
-        );
     }
 }

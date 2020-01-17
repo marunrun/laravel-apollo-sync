@@ -17,8 +17,8 @@ class SyncConfig extends Command
     protected $description = '同步阿波罗配置';
 
 
+
     public function handle()
     {
-
     }
 }
