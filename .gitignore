@@ -1,0 +1,8 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+apolloConfig.*
+test.php
+vendor
+build
+composer.lock
+.phpunit.result.cache

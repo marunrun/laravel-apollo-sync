@@ -1,0 +1,24 @@
+{
+  "name": "run/laravel-apollo-sync",
+  "description": "apollo sync",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "Apollo",
+    "Client",
+    "Laravel"
+  ],
+  "homepage": "https://github.com/run6/apollo-php-client",
+  "require": {
+    "php": "~7.0",
+    "illuminate/console": "^5.2|^6"
+  },
+  "autoload": {
+    "psr-4": {
+      "Run\\Apollo\\Client\\": "src/"
+    }
+  },
+  "require-dev": {
+    "orchestra/testbench": "^3.0|^4.0"
+  }
+}
